@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rastreabilidade Oficial | Queijo Colonial Amanteigado - Sabor do Campo</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#F7F2E7',
+              200: '#EDE3CF',
+              300: '#DFCEAF',
+            },
+            butter: {
+              300: '#F5D576',
+              400: '#EBC04D',
+              500: '#D49E24',
+              600: '#B58114',
+            },
+            coffee: {
+              700: '#583E31',
+              800: '#3F2A20',
+              900: '#2A1B14',
+            },
+            olive: {
+              100: '#EBF0EA',
+              600: '#466343',
+              700: '#354D32',
+              800: '#263824',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printable-label, #printable-label * {
+        visibility: visible;
+      }
+      #printable-label {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid #2A1B14 !important;
+        box-shadow: none !important;
+        width: 340px !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-cream-50 text-coffee-900 font-sans antialiased selection:bg-butter-400 selection:text-coffee-900">
+
+  <!-- Barra Superior de Segurança Alimentar -->
+  <div class="bg-olive-800 text-cream-100 text-xs py-2 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+      <span class="inline-flex items-center gap-1.5 font-medium">
+        <i data-lucide="shield-check" class="w-4 h-4 text-butter-300"></i>
+        Portal Oficial de Rastreabilidade e Transparência Alimentar
+      </span>
+      <span class="text-cream-200">
+        Agroindústria Sabor do Campo Ltda. • Erechim - RS
+      </span>
+    </div>
+  </div>
+
+  <!-- 1. Cabeçalho Institucional + Consulta Rápida de Lote -->
+  <header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-200 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        
+        <!-- Identidade Institucional + Selo S.I.E. RS -->
+        <div class="flex items-center justify-between">
+          <a href="#" class="flex items-center gap-3">
+            <!-- Selo S.I.E. RS SVG Compacto -->
+            <div class="shrink-0 bg-white rounded-full p-1 border border-cream-300 shadow-xs" title="Selo de Inspeção Estadual - S.I.E. RS 00000000">
+              <svg class="w-12 h-12 text-coffee-900" viewBox="0 0 140 140">
+                <defs>
+                  <path id="headerTopArc" d="M 22,70 A 48,48 0 1,1 118,70" />
+                  <path id="headerBottomArc" d="M 118,70 A 48,48 0 1,1 22,70" />
+                </defs>
+                <circle cx="70" cy="70" r="64" fill="#FDFBF7" stroke="#2A1B14" stroke-width="4" />
+                <circle cx="70" cy="70" r="36" fill="none" stroke="#2A1B14" stroke-width="2" />
+                <text font-size="12" font-weight="800" fill="#2A1B14" letter-spacing="2" font-family="Plus Jakarta Sans, sans-serif">
+                  <textPath href="#headerTopArc" startOffset="50%" text-anchor="middle">INSPECIONADO</textPath>
+                </text>
+                <text x="70" y="75" font-size="16" font-weight="800" fill="#2A1B14" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif">
+                  S.I.E. RS
+                </text>
+                <text font-size="11.5" font-weight="700" fill="#2A1B14" letter-spacing="2.2" font-family="Plus Jakarta Sans, sans-serif">
+                  <textPath href="#headerBottomArc" startOffset="50%" text-anchor="middle">00000000</textPath>
+                </text>
+              </svg>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-serif font-bold text-lg sm:text-xl text-coffee-900 leading-tight">
+                  Sabor do Campo
+                </span>
+                <span class="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cream-200 text-coffee-800">
+                  Desde 2026
+                </span>
+              </div>
+              <span class="block text-xs text-olive-700 font-semibold">
+                Sistema de Rastreio • S.I.E. RS 00000000
+              </span>
+            </div>
+          </a>
+
+          <!-- Botão Certificado Mobile -->
+          <button type="button" onclick="openCertModal()" class="lg:hidden inline-flex items-center gap-1.5 text-xs font-bold bg-olive-100 text-olive-800 px-3 py-2 rounded-xl border border-olive-600/20">
+            <i data-lucide="file-badge" class="w-4 h-4 text-olive-700"></i>
+            <span>Certificado</span>
+          </button>
+        </div>
+
+        <!-- Barra de Consulta Rápida de Lote -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+          <form id="quick-lot-form" class="flex items-center bg-white border border-cream-300 rounded-xl p-1 shadow-xs focus-within:ring-2 focus-within:ring-olive-600">
+            <span class="pl-3 pr-2 text-xs font-bold text-coffee-700 uppercase tracking-wider">Lote:</span>
+            <input 
+              type="text" 
+              id="quick-lot-input" 
+              value="01/26" 
+              placeholder="Ex: 01/26" 
+              aria-label="Número do Lote"
+              class="w-24 sm:w-28 text-sm font-bold text-coffee-900 bg-transparent focus:outline-none uppercase"
+            />
+            <button type="submit" class="bg-coffee-900 hover:bg-coffee-800 text-cream-50 text-xs font-semibold px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+              <i data-lucide="search" class="w-3.5 h-3.5 text-butter-300"></i>
+              <span>Rastrear</span>
+            </button>
+          </form>
+
+          <button type="button" onclick="openCertModal()" class="hidden lg:inline-flex items-center gap-1.5 text-xs font-bold bg-olive-100 hover:bg-olive-600 hover:text-white text-olive-800 px-3.5 py-2.5 rounded-xl border border-olive-600/20 transition-colors">
+            <i data-lucide="file-badge" class="w-4 h-4"></i>
+            <span>Ver Certificado S.I.E.</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-12">
+
+    <!-- 2. Painel Principal de Autenticidade e Rastreabilidade do Lote -->
+    <section aria-labelledby="authenticity-heading" class="bg-white rounded-3xl border-2 border-cream-300 shadow-md overflow-hidden">
+      <!-- Faixa de Status do Lote -->
+      <div id="lot-status-banner" class="bg-olive-700 text-cream-50 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div id="lot-status-icon" class="w-9 h-9 rounded-full bg-cream-50/15 flex items-center justify-center shrink-0">
+            <i data-lucide="badge-check" class="w-5 h-5 text-butter-300"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="lot-status-badge" class="text-xs font-extrabold uppercase tracking-wider bg-butter-400 text-coffee-900 px-2.5 py-0.5 rounded-full">
+                Lote Verificado e Ativo
+              </span>
+              <span class="text-xs text-cream-200 hidden sm:inline">• Leitura via QR Code da Embalagem</span>
+            </div>
+            <p id="lot-status-sub" class="text-xs sm:text-sm text-cream-100 mt-0.5">
+              Autenticidade confirmada pela Agroindústria Sabor do Campo Ltda.
+            </p>
+          </div>
+        </div>
+
+        <button type="button" onclick="openCertModal()" class="self-start sm:self-center inline-flex items-center gap-1.5 text-xs font-semibold bg-cream-50 text-coffee-900 hover:bg-butter-300 px-3.5 py-2 rounded-xl transition-colors">
+          <i data-lucide="award" class="w-4 h-4 text-olive-700"></i>
+          <span>Certificado Sanitário</span>
+        </button>
+      </div>
+
+      <!-- Conteúdo Principal do Painel -->
+      <div class="p-6 sm:p-8 lg:p-10">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Dados do Produto e Lote -->
+          <div class="lg:col-span-8 space-y-6">
+            <div>
+              <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-butter-600 mb-1">
+                <span>Produto Artesanal</span>
+                <span>•</span>
+                <span>Desde 2026</span>
+                <span>•</span>
+                <span>Indústria Brasileira</span>
+              </div>
+              <h1 id="authenticity-heading" class="font-serif text-3xl sm:text-4xl font-bold text-coffee-900">
+                Queijo Colonial Amanteigado <span class="text-olive-700 font-sans text-xl sm:text-2xl font-extrabold">(1 Kg)</span>
+              </h1>
+            </div>
+
+            <!-- Grid de Metadados Oficiais de Rastreabilidade -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="bg-cream-50 p-4 rounded-2xl border border-cream-200">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-coffee-700 flex items-center gap-1.5">
+                  <i data-lucide="hash" class="w-3.5 h-3.5 text-butter-600"></i>
+                  Lote de Produção
+                </span>
+                <strong id="display-lot" class="block font-serif text-2xl font-bold text-coffee-900 mt-1">
+                  01/26
+                </strong>
+              </div>
+
+              <div class="bg-cream-50 p-4 rounded-2xl border border-cream-200">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-coffee-700 flex items-center gap-1.5">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-olive-700"></i>
+                  Data de Fabricação
+                </span>
+                <strong id="display-fab" class="block text-xl font-extrabold text-coffee-900 mt-1">
+                  18/11/2026
+                </strong>
+              </div>
+
+              <div class="bg-cream-50 p-4 rounded-2xl border border-cream-200 sm:col-span-2 lg:col-span-1">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-coffee-700 flex items-center gap-1.5">
+                  <i data-lucide="calendar-clock" class="w-3.5 h-3.5 text-butter-600"></i>
+                  Data de Validade
+                </span>
+                <strong id="display-val" class="block text-xl font-extrabold text-olive-700 mt-1">
+                  17/01/2027
+                </strong>
+                <span class="block text-[11px] text-coffee-700 mt-0.5">60 dias fechado (10 dias após aberto)</span>
+              </div>
+            </div>
+
+            <!-- Bloco de Origem e Inspeção Sanitária -->
+            <div class="bg-cream-100/70 p-5 rounded-2xl border border-cream-200 space-y-3 text-sm">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-cream-200">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="shield" class="w-4 h-4 text-olive-700 shrink-0"></i>
+                  <span class="font-semibold text-coffee-800">Inspeção Sanitária:</span>
+                </div>
+                <strong class="text-coffee-900 font-bold">Inspecionado S.I.E. RS nº 00000000</strong>
+              </div>
+
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-butter-600 shrink-0 mt-1"></i>
+                <div>
+                  <span class="font-semibold text-coffee-800 block">Origem / Fabricante:</span>
+                  <p class="text-coffee-900 leading-relaxed">
+                    <strong>Agroindústria Sabor do Campo Ltda.</strong> – Linha do Campo, s/n – Erechim - RS – CNPJ: 00.000.000/0001-00 – Indústria Brasileira.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cartão Lateral: Selo S.I.E. RS Ampliado + Ilustração do Produto -->
+          <div class="lg:col-span-4">
+            <div class="bg-gradient-to-b from-cream-100 to-cream-200/70 rounded-3xl p-6 border border-cream-300 flex flex-col items-center text-center">
+              <!-- Selo Oficial S.I.E. RS SVG Detalhado -->
+              <svg class="w-36 h-36 text-coffee-900 drop-shadow-xs" viewBox="0 0 140 140">
+                <defs>
+                  <path id="mainTopArc" d="M 22,70 A 48,48 0 1,1 118,70" />
+                  <path id="mainBottomArc" d="M 118,70 A 48,48 0 1,1 22,70" />
+                </defs>
+                <circle cx="70" cy="70" r="64" fill="#FDFBF7" stroke="#2A1B14" stroke-width="3" />
+                <circle cx="70" cy="70" r="60" fill="none" stroke="#2A1B14" stroke-width="1" stroke-dasharray="3 2" />
+                <circle cx="70" cy="70" r="36" fill="none" stroke="#2A1B14" stroke-width="1.5" />
+                <text font-size="11.5" font-weight="800" fill="#2A1B14" letter-spacing="2.2" font-family="Plus Jakarta Sans, sans-serif">
+                  <textPath href="#mainTopArc" startOffset="50%" text-anchor="middle">INSPECIONADO</textPath>
+                </text>
+                <text x="70" y="75" font-size="16" font-weight="800" fill="#2A1B14" text-anchor="middle" letter-spacing="1" font-family="Plus Jakarta Sans, sans-serif">
+                  S.I.E. RS
+                </text>
+                <text font-size="11" font-weight="700" fill="#2A1B14" letter-spacing="2.5" font-family="Plus Jakarta Sans, sans-serif">
+                  <textPath href="#mainBottomArc" startOffset="50%" text-anchor="middle">00000000</textPath>
+                </text>
+              </svg>
+
+              <div class="mt-4 space-y-1">
+                <span class="block text-xs font-bold uppercase tracking-wider text-olive-800">
+                  Registro Estadual Confirmado
+                </span>
+                <p class="text-xs text-coffee-700">
+                  Produto artesanal inspecionado conforme normas sanitárias do Rio Grande do Sul.
+                </p>
+              </div>
+
+              <div class="w-full mt-5 pt-4 border-t border-cream-300 flex items-center justify-between text-xs">
+                <span class="text-coffee-700">Peso Líquido:</span>
+                <strong class="font-serif text-base text-coffee-900">1 Kg (33 porções)</strong>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Linha do Tempo da Cadeia Produtiva (Do Campo à Mesa) -->
+    <section aria-labelledby="timeline-heading" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-olive-700">
+            Histórico de Produção • Lote <span id="timeline-lot-label">01/26</span>
+          </span>
+          <h2 id="timeline-heading" class="font-serif text-2xl sm:text-3xl font-bold text-coffee-900 mt-1">
+            Linha do Tempo: Do Campo à Mesa
+          </h2>
+        </div>
+        <span class="text-xs text-coffee-700 font-medium">
+          Rastreio integral em 5 etapas auditadas
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-4">
+        <!-- Etapa 1 -->
+        <div class="bg-white p-5 rounded-2xl border border-cream-200 shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-8 h-8 rounded-xl bg-olive-100 text-olive-800 font-extrabold text-xs flex items-center justify-center">01</span>
+              <i data-lucide="milk" class="w-5 h-5 text-olive-700"></i>
+            </div>
+            <h3 class="font-serif font-bold text-base text-coffee-900 mb-1.5">
+              Ordenha e Seleção de Leite Cru
+            </h3>
+            <p class="text-xs text-coffee-700 leading-relaxed">
+              Coleta fresca e seleção rigorosa de leite cru na propriedade rural em <strong>Linha do Campo (Erechim - RS)</strong>.
+            </p>
+          </div>
+          <div class="mt-4 pt-2.5 border-t border-cream-100 text-[11px] font-semibold text-olive-700">
+            Origem Rural Verificada
+          </div>
+        </div>
+
+        <!-- Etapa 2 -->
+        <div class="bg-white p-5 rounded-2xl border border-cream-200 shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-8 h-8 rounded-xl bg-butter-300/40 text-coffee-900 font-extrabold text-xs flex items-center justify-center">02</span>
+              <i data-lucide="chef-hat" class="w-5 h-5 text-butter-600"></i>
+            </div>
+            <h3 class="font-serif font-bold text-base text-coffee-900 mb-1.5">
+              Coagulação e Elaboração Artesanal
+            </h3>
+            <p class="text-xs text-coffee-700 leading-relaxed">
+              Receita tradicional com apenas 3 ingredientes puros: <strong>leite cru, sal e coagulante líquido</strong>, garantindo textura amanteigada.
+            </p>
+          </div>
+          <div class="mt-4 pt-2.5 border-t border-cream-100 text-[11px] font-semibold text-butter-600">
+            Processo Artesanal
+          </div>
+        </div>
+
+        <!-- Etapa 3 -->
+        <div class="bg-white p-5 rounded-2xl border border-cream-200 shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-8 h-8 rounded-xl bg-olive-100 text-olive-800 font-extrabold text-xs flex items-center justify-center">03</span>
+              <i data-lucide="clipboard-check" class="w-5 h-5 text-olive-700"></i>
+            </div>
+            <h3 class="font-serif font-bold text-base text-coffee-900 mb-1.5">
+              Controle de Qualidade S.I.E. RS
+            </h3>
+            <p class="text-xs text-coffee-700 leading-relaxed">
+              Análise físico-química, sanitária e liberação sob supervisão do Serviço de Inspeção Estadual (<strong>S.I.E. RS 00000000</strong>).
+            </p>
+          </div>
+          <div class="mt-4 pt-2.5 border-t border-cream-100 text-[11px] font-semibold text-olive-700">
+            Aprovado na Inspeção
+          </div>
+        </div>
+
+        <!-- Etapa 4 -->
+        <div class="bg-white p-5 rounded-2xl border border-cream-200 shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-8 h-8 rounded-xl bg-butter-300/40 text-coffee-900 font-extrabold text-xs flex items-center justify-center">04</span>
+              <i data-lucide="tag" class="w-5 h-5 text-butter-600"></i>
+            </div>
+            <h3 class="font-serif font-bold text-base text-coffee-900 mb-1.5">
+              Embalagem e Rotulagem
+            </h3>
+            <p class="text-xs text-coffee-700 leading-relaxed">
+              Pesagem da peça de <strong>1 Kg</strong>, selagem protetora e identificação oficial do <strong id="step4-lot">Lote 01/26</strong> em <strong id="step4-fab">18/11/2026</strong>.
+            </p>
+          </div>
+          <div class="mt-4 pt-2.5 border-t border-cream-100 text-[11px] font-semibold text-butter-600">
+            Etiquetagem Rastreada
+          </div>
+        </div>
+
+        <!-- Etapa 5 -->
+        <div class="bg-white p-5 rounded-2xl border border-cream-200 shadow-xs relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-900 font-extrabold text-xs flex items-center justify-center">05</span>
+              <i data-lucide="thermometer-snowflake" class="w-5 h-5 text-sky-700"></i>
+            </div>
+            <h3 class="font-serif font-bold text-base text-coffee-900 mb-1.5">
+              Cadeia de Frio Controlada
+            </h3>
+            <p class="text-xs text-coffee-700 leading-relaxed">
+              Armazenamento e transporte refrigerado rigorosamente entre <strong>1°C e 10°C</strong> até chegar à mesa do consumidor.
+            </p>
+          </div>
+          <div class="mt-4 pt-2.5 border-t border-cream-100 text-[11px] font-semibold text-sky-800">
+            Temp. Ideal: 1°C a 10°C
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Ficha Técnica e Informações Nutricionais Oficiais -->
+    <section aria-labelledby="specs-heading" class="grid lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Coluna Esquerda: Ingredientes & Conservação -->
+      <div class="lg:col-span-5 space-y-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-olive-700">
+            Rotulagem Oficial
+          </span>
+          <h2 id="specs-heading" class="font-serif text-2xl sm:text-3xl font-bold text-coffee-900 mt-1">
+            Ficha Técnica e Conservação
+          </h2>
+        </div>
+
+        <!-- Ingredientes -->
+        <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-xs space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-olive-100 text-olive-800 flex items-center justify-center">
+              <i data-lucide="sprout" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-lg text-coffee-900">Ingredientes</h3>
+              <p class="text-xs text-coffee-700">Composição integral declarada no rótulo</p>
+            </div>
+          </div>
+
+          <p class="text-sm font-semibold text-coffee-900 bg-cream-50 p-4 rounded-2xl border border-cream-200">
+            INGREDIENTES: Leite cru, sal, coagulante líquido.
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-cream-100 text-coffee-800 border border-cream-200">Leite cru</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-cream-100 text-coffee-800 border border-cream-200">Sal</span>
+            <span class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-cream-100 text-coffee-800 border border-cream-200">Coagulante líquido</span>
+          </div>
+        </div>
+
+        <!-- Conservação -->
+        <div class="bg-white p-6 rounded-3xl border border-cream-200 shadow-xs space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center">
+              <i data-lucide="snowflake" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-lg text-coffee-900">Modo de Conservação</h3>
+              <p class="text-xs text-coffee-700">Orientações para segurança e frescor</p>
+            </div>
+          </div>
+
+          <p class="text-sm text-coffee-800 leading-relaxed bg-cream-50 p-4 rounded-2xl border border-cream-200">
+            <strong>CONSERVAÇÃO:</strong> Mantenha refrigerado de <strong>1°C a 10°C</strong>. Validade: <strong>60 dias</strong> após a data de fabricação. Após aberto, consumir em até <strong>10 dias</strong>.
+          </p>
+
+          <div class="grid grid-cols-3 gap-2 text-center pt-1">
+            <div class="p-2.5 rounded-xl bg-cream-50 border border-cream-200">
+              <span class="block text-[10px] uppercase text-coffee-700 font-bold">Temperatura</span>
+              <strong class="text-xs sm:text-sm text-sky-800">1°C a 10°C</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-cream-50 border border-cream-200">
+              <span class="block text-[10px] uppercase text-coffee-700 font-bold">Fechado</span>
+              <strong class="text-xs sm:text-sm text-coffee-900">60 dias</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-cream-50 border border-cream-200">
+              <span class="block text-[10px] uppercase text-coffee-700 font-bold">Aberto</span>
+              <strong class="text-xs sm:text-sm text-olive-700">Até 10 dias</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna Direita: Tabela Nutricional Oficial Padrão ANVISA -->
+      <div class="lg:col-span-7">
+        <div class="bg-white rounded-3xl border-2 border-coffee-900 shadow-sm overflow-hidden">
+          <div class="bg-coffee-900 text-cream-50 px-6 py-4">
+            <h3 class="font-sans font-extrabold text-lg sm:text-xl tracking-wide uppercase">
+              Informação Nutricional
+            </h3>
+            <p class="text-xs sm:text-sm text-cream-200 mt-0.5">
+              Porções por embalagem: <strong>33</strong> • Porção: <strong>30 g (1 fatia)</strong>
+            </p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b-2 border-coffee-900 bg-cream-100 text-coffee-900 font-bold">
+                  <th class="py-3 px-4 sm:px-6">Nutriente</th>
+                  <th class="py-3 px-3 text-right">100 g</th>
+                  <th class="py-3 px-3 text-right bg-butter-300/30">30 g</th>
+                  <th class="py-3 px-4 sm:px-6 text-right">% VD (*)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-cream-200 text-coffee-900">
+                <tr class="font-bold">
+                  <td class="py-2.5 px-4 sm:px-6">Valor energético (kcal)</td>
+                  <td class="py-2.5 px-3 text-right">52</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15">15</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">1</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 sm:px-6">Carboidratos (g)</td>
+                  <td class="py-2.5 px-3 text-right">5</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15 font-semibold">1</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">0</td>
+                </tr>
+                <tr class="text-coffee-700">
+                  <td class="py-2.5 pl-8 sm:pl-10 pr-4">Açúcares totais (g)</td>
+                  <td class="py-2.5 px-3 text-right">5</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15 font-semibold">1</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">-</td>
+                </tr>
+                <tr class="text-coffee-700">
+                  <td class="py-2.5 pl-8 sm:pl-10 pr-4">Açúcares adicionados (g)</td>
+                  <td class="py-2.5 px-3 text-right">0</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15 font-semibold">0</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">-</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 sm:px-6">Proteínas (g)</td>
+                  <td class="py-2.5 px-3 text-right">3</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15 font-semibold">1</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">1</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 sm:px-6">Gorduras totais (g)</td>
+                  <td class="py-2.5 px-3 text-right">2</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15 font-semibold">1</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">1</td>
+                </tr>
+                <tr class="text-coffee-700">
+                  <td class="py-2.5 pl-8 sm:pl-10 pr-4">Gorduras saturadas (g)</td>
+                  <td class="py-2.5 px-3 text-right">1</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15 font-semibold">0</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">2</td>
+                </tr>
+                <tr class="text-coffee-700">
+                  <td class="py-2.5 pl-8 sm:pl-10 pr-4">Gorduras trans (g)</td>
+                  <td class="py-2.5 px-3 text-right">0</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15 font-semibold">0</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">-</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 sm:px-6">Fibra alimentar (g)</td>
+                  <td class="py-2.5 px-3 text-right">0</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15 font-semibold">0</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">0</td>
+                </tr>
+                <tr class="font-bold">
+                  <td class="py-2.5 px-4 sm:px-6">Sódio (mg)</td>
+                  <td class="py-2.5 px-3 text-right">421</td>
+                  <td class="py-2.5 px-3 text-right bg-butter-300/15">126</td>
+                  <td class="py-2.5 px-4 sm:px-6 text-right">5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="bg-cream-100 px-6 py-3 border-t border-coffee-900 text-xs text-coffee-800">
+            (*) Percentual de valores diários fornecidos pela porção.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Visualizador/Gerador de QR Code de Rastreabilidade + Canal SAC -->
+    <section aria-labelledby="qr-sac-heading" class="grid lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Visualizador e Impressão da Etiqueta QR Code -->
+      <div class="lg:col-span-6 bg-white rounded-3xl border border-cream-200 p-6 sm:p-8 shadow-xs flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-olive-700">
+            Etiqueta Digital
+          </span>
+          <h2 id="qr-sac-heading" class="font-serif text-2xl font-bold text-coffee-900 mt-1">
+            QR Code de Rastreabilidade
+          </h2>
+          <p class="text-xs sm:text-sm text-coffee-700 mt-1">
+            Código único vinculado ao lote para conferência rápida na embalagem ou impressão de etiqueta de controle.
+          </p>
+        </div>
+
+        <!-- Área Imprimível da Etiqueta -->
+        <div id="printable-label" class="my-6 bg-cream-50 border-2 border-dashed border-coffee-700/40 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-5">
+          <!-- QR Code SVG Limpo -->
+          <div class="bg-white p-3 rounded-xl border border-cream-300 shrink-0 shadow-2xs">
+            <svg id="qr-svg" class="w-32 h-32 text-coffee-900" viewBox="0 0 120 120" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR Code de Rastreabilidade Lote 01/26">
+              <!-- Cantos de alinhamento padrão QR Code -->
+              <path d="M10 10h30v30H10V10zm6 6v18h18V16H16zm6 6h6v6h-6v-6z"/>
+              <path d="M80 10h30v30H80V10zm6 6v18h18V16H86zm6 6h6v6h-6v-6z"/>
+              <path d="M10 80h30v30H10V80zm6 6v18h18V86H16zm6 6h6v6h-6v-6z"/>
+              <!-- Matriz de dados dinâmica -->
+              <g id="qr-matrix"></g>
+            </svg>
+          </div>
+
+          <div class="text-center sm:text-left space-y-1.5">
+            <span class="inline-block text-[10px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded bg-coffee-900 text-cream-50">
+              Rastreio Oficial • S.I.E. RS
+            </span>
+            <h3 class="font-serif font-bold text-lg text-coffee-900 leading-snug">
+              Queijo Colonial Amanteigado
+            </h3>
+            <p class="text-xs text-coffee-800 font-semibold">
+              Peso Líq.: 1 Kg • Produto Artesanal
+            </p>
+            <div class="text-xs text-coffee-700 space-y-0.5 pt-1">
+              <p><strong>LOTE:</strong> <span id="qr-lot-text">01/26</span></p>
+              <p><strong>FAB:</strong> <span id="qr-fab-text">18/11/2026</span> | <strong>VAL:</strong> <span id="qr-val-text">17/01/2027</span></p>
+              <p class="text-[11px] text-olive-700 font-semibold">Sabor do Campo Ltda. • Erechim - RS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <button type="button" onclick="window.print()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-coffee-900 hover:bg-coffee-800 text-cream-50 text-xs sm:text-sm font-semibold px-5 py-3 rounded-xl transition-colors">
+            <i data-lucide="printer" class="w-4 h-4 text-butter-300"></i>
+            <span>Imprimir Etiqueta de Rastreio</span>
+          </button>
+          <button type="button" id="copy-link-btn" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-cream-100 hover:bg-cream-200 text-coffee-900 border border-cream-300 text-xs sm:text-sm font-semibold px-4 py-3 rounded-xl transition-colors">
+            <i data-lucide="link" class="w-4 h-4 text-coffee-700"></i>
+            <span id="copy-link-text">Copiar Link do Lote</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Canal de Atendimento ao Consumidor / SAC -->
+      <div class="lg:col-span-6 bg-white rounded-3xl border border-cream-200 p-6 sm:p-8 shadow-xs flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-butter-600">
+            Atendimento ao Consumidor
+          </span>
+          <h2 class="font-serif text-2xl font-bold text-coffee-900 mt-1">
+            SAC — Agroindústria Sabor do Campo
+          </h2>
+          <p class="text-xs sm:text-sm text-coffee-700 mt-1 mb-5">
+            Dúvidas sobre este lote, sugestões ou informações sobre pontos de venda? Fale diretamente com nossa equipe em Erechim - RS.
+          </p>
+
+          <form id="sac-form" class="space-y-3.5">
+            <div class="grid sm:grid-cols-2 gap-3.5">
+              <div>
+                <label for="sac-name" class="block text-[11px] font-bold uppercase tracking-wider text-coffee-800 mb-1">Nome Completo</label>
+                <input type="text" id="sac-name" required placeholder="Seu nome" class="w-full px-3.5 py-2.5 rounded-xl bg-cream-50 border border-cream-300 text-sm text-coffee-900 focus:outline-none focus:ring-2 focus:ring-olive-600" />
+              </div>
+              <div>
+                <label for="sac-contact" class="block text-[11px] font-bold uppercase tracking-wider text-coffee-800 mb-1">Telefone ou E-mail</label>
+                <input type="text" id="sac-contact" required placeholder="(54) 99999-0000" class="w-full px-3.5 py-2.5 rounded-xl bg-cream-50 border border-cream-300 text-sm text-coffee-900 focus:outline-none focus:ring-2 focus:ring-olive-600" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3.5">
+              <div>
+                <label for="sac-lot" class="block text-[11px] font-bold uppercase tracking-wider text-coffee-800 mb-1">Lote Referência</label>
+                <input type="text" id="sac-lot" value="01/26" readonly class="w-full px-3.5 py-2.5 rounded-xl bg-cream-100 border border-cream-300 text-sm font-bold text-coffee-800" />
+              </div>
+              <div>
+                <label for="sac-subject" class="block text-[11px] font-bold uppercase tracking-wider text-coffee-800 mb-1">Assunto</label>
+                <select id="sac-subject" class="w-full px-3.5 py-2.5 rounded-xl bg-cream-50 border border-cream-300 text-sm text-coffee-900 focus:outline-none focus:ring-2 focus:ring-olive-600">
+                  <option value="Consulta de Rastreabilidade">Consulta de Rastreabilidade</option>
+                  <option value="Qualidade / Conservação">Qualidade / Conservação</option>
+                  <option value="Onde Comprar / Comércio">Onde Comprar / Comércio</option>
+                  <option value="Elogios ou Sugestões">Elogios ou Sugestões</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="sac-msg" class="block text-[11px] font-bold uppercase tracking-wider text-coffee-800 mb-1">Mensagem</label>
+              <textarea id="sac-msg" rows="2" required placeholder="Escreva sua mensagem para nossa equipe..." class="w-full px-3.5 py-2.5 rounded-xl bg-cream-50 border border-cream-300 text-sm text-coffee-900 focus:outline-none focus:ring-2 focus:ring-olive-600"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-olive-700 hover:bg-olive-800 text-cream-50 text-sm font-semibold py-3 px-5 rounded-xl transition-colors flex items-center justify-center gap-2">
+              <i data-lucide="message-square" class="w-4 h-4 text-butter-300"></i>
+              <span>Enviar Mensagem ao SAC</span>
+            </button>
+          </form>
+
+          <!-- Feedback SAC sem alert -->
+          <div id="sac-feedback" class="hidden mt-4 p-3.5 rounded-2xl bg-olive-100 border border-olive-600/30 text-olive-800 text-xs">
+            <strong class="block font-bold">Protocolo SAC registrado!</strong>
+            <span id="sac-feedback-text"></span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Rodapé Institucional -->
+  <footer class="bg-coffee-900 text-cream-200 mt-12 border-t border-coffee-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-coffee-800">
+        <div class="space-y-1.5 text-xs sm:text-sm">
+          <p class="font-serif font-bold text-lg text-cream-50">
+            Agroindústria Sabor do Campo Ltda.
+          </p>
+          <p class="text-cream-300">
+            Linha do Campo, s/n – Erechim - RS • CNPJ: 00.000.000/0001-00 • INDÚSTRIA BRASILEIRA
+          </p>
+          <p class="text-cream-300 text-xs">
+            Queijo Colonial Amanteigado • Produto Artesanal • Desde 2026 • Peso Líquido: 1 Kg
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3 bg-coffee-800 px-4 py-3 rounded-2xl border border-coffee-700 shrink-0">
+          <i data-lucide="shield-check" class="w-6 h-6 text-butter-400"></i>
+          <div class="text-xs">
+            <strong class="block text-cream-50">Inspecionado S.I.E. RS</strong>
+            <span class="text-cream-300">Registro nº 00000000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-5 flex flex-col sm:flex-row items-center justify-between text-xs text-cream-300 gap-2">
+        <span>Portal Oficial de Rastreabilidade Alimentar</span>
+        <span>© 2026 Agroindústria Sabor do Campo Ltda.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal do Certificado Sanitário S.I.E. RS -->
+  <div id="cert-modal" class="hidden fixed inset-0 z-50 bg-coffee-900/70 backdrop-blur-xs flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title">
+    <div class="bg-cream-50 max-w-lg w-full rounded-3xl border-2 border-coffee-900 shadow-2xl overflow-hidden">
+      <div class="bg-coffee-900 text-cream-50 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i data-lucide="file-badge" class="w-5 h-5 text-butter-400"></i>
+          <h3 id="cert-modal-title" class="font-serif font-bold text-lg">Certificado de Rastreio e Inspeção</h3>
+        </div>
+        <button type="button" onclick="closeCertModal()" aria-label="Fechar Modal" class="p-1.5 rounded-lg hover:bg-coffee-800 text-cream-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-4 text-sm">
+        <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-cream-200">
+          <div class="w-12 h-12 rounded-full bg-olive-100 text-olive-800 flex items-center justify-center shrink-0">
+            <i data-lucide="shield-check" class="w-7 h-7"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase text-olive-700">Registro Sanitário Oficial</span>
+            <strong class="block text-base text-coffee-900">INSPECIONADO S.I.E. RS • 00000000</strong>
+            <span class="text-xs text-coffee-700">Serviço de Inspeção Estadual - Rio Grande do Sul</span>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl border border-cream-200 space-y-2 text-xs sm:text-sm">
+          <div class="flex justify-between py-1 border-b border-cream-100">
+            <span class="text-coffee-700">Produto:</span>
+            <strong class="text-coffee-900">Queijo Colonial Amanteigado (1 Kg)</strong>
+          </div>
+          <div class="flex justify-between py-1 border-b border-cream-100">
+            <span class="text-coffee-700">Lote Auditado:</span>
+            <strong id="modal-lot" class="text-coffee-900">01/26</strong>
+          </div>
+          <div class="flex justify-between py-1 border-b border-cream-100">
+            <span class="text-coffee-700">Fabricação / Validade:</span>
+            <strong id="modal-dates" class="text-coffee-900">18/11/2026 até 17/01/2027</strong>
+          </div>
+          <div class="flex justify-between py-1 border-b border-cream-100">
+            <span class="text-coffee-700">Estabelecimento:</span>
+            <strong class="text-coffee-900 text-right">Agroindústria Sabor do Campo Ltda.</strong>
+          </div>
+          <div class="flex justify-between py-1">
+            <span class="text-coffee-700">Localidade / CNPJ:</span>
+            <strong class="text-coffee-900 text-right">Erechim - RS • 00.000.000/0001-00</strong>
+          </div>
+        </div>
+
+        <p class="text-xs text-coffee-700 leading-relaxed">
+          Este certificado digital atesta a rastreabilidade de origem do lote informado, produzido artesanalmente na Linha do Campo, s/n – Erechim - RS, sob inspeção sanitária estadual.
+        </p>
+
+        <div class="flex justify-end pt-2">
+          <button type="button" onclick="closeCertModal()" class="bg-coffee-900 hover:bg-coffee-800 text-cream-50 font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition-colors">
+            Fechar Certificado
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts de Rastreabilidade e Interatividade -->
+  <script>
+    lucide.createIcons();
+
+    // Base de dados de lotes rastreáveis
+    const lotsRegistry = {
+      '01/26': {
+        lot: '01/26',
+        fab: '18/11/2026',
+        val: '17/01/2027',
+        verified: true,
+        statusBadge: 'Lote Verificado e Ativo',
+        statusSub: 'Autenticidade confirmada pela Agroindústria Sabor do Campo Ltda.'
+      }
+    };
+
+    // Gera padrão visual determinístico no SVG do QR Code com base no código do lote
+    function renderQrMatrix(lotCode) {
+      const matrixGroup = document.getElementById('qr-matrix');
+      matrixGroup.innerHTML = '';
+      let seed = 0;
+      for (let i = 0; i < lotCode.length; i++) {
+        seed += lotCode.charCodeAt(i) * (i + 7);
+      }
+
+      const cells = [];
+      for (let row = 0; row < 15; row++) {
+        for (let col = 0; col < 15; col++) {
+          // Evita os 3 cantos de posicionamento
+          const inTopLeft = row < 5 && col < 5;
+          const inTopRight = row < 5 && col > 9;
+          const inBottomLeft = row > 9 && col < 5;
+          if (inTopLeft || inTopRight || inBottomLeft) continue;
+
+          const hash = (row * 17 + col * 31 + seed) % 7;
+          if (hash === 0 || hash === 2 || hash === 5) {
+            const x = 10 + col * 6.66;
+            const y = 10 + row * 6.66;
+            cells.push(`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="5.2" height="5.2" rx="1"/>`);
+          }
+        }
+      }
+      matrixGroup.innerHTML = cells.join('');
+    }
+
+    // Atualiza toda a interface de rastreabilidade ao consultar um lote
+    function updateLotView(rawInput) {
+      const cleaned = rawInput.trim().toUpperCase().replace(/^LOTE[:\s]*/i, '');
+      const record = lotsRegistry[cleaned];
+
+      const banner = document.getElementById('lot-status-banner');
+      const badge = document.getElementById('lot-status-badge');
+      const sub = document.getElementById('lot-status-sub');
+
+      if (record) {
+        banner.className = 'bg-olive-700 text-cream-50 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3';
+        badge.className = 'text-xs font-extrabold uppercase tracking-wider bg-butter-400 text-coffee-900 px-2.5 py-0.5 rounded-full';
+        badge.textContent = record.statusBadge;
+        sub.textContent = record.statusSub;
+
+        document.getElementById('display-lot').textContent = record.lot;
+        document.getElementById('display-fab').textContent = record.fab;
+        document.getElementById('display-val').textContent = record.val;
+
+        document.getElementById('timeline-lot-label').textContent = record.lot;
+        document.getElementById('step4-lot').textContent = `Lote ${record.lot}`;
+        document.getElementById('step4-fab').textContent = record.fab;
+
+        document.getElementById('qr-lot-text').textContent = record.lot;
+        document.getElementById('qr-fab-text').textContent = record.fab;
+        document.getElementById('qr-val-text').textContent = record.val;
+        document.getElementById('sac-lot').value = record.lot;
+
+        document.getElementById('modal-lot').textContent = record.lot;
+        document.getElementById('modal-dates').textContent = `${record.fab} até ${record.val}`;
+
+        renderQrMatrix(record.lot);
+      } else {
+        const fallbackCode = cleaned || 'NÃO INFORMADO';
+        banner.className = 'bg-amber-800 text-cream-50 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3';
+        badge.className = 'text-xs font-extrabold uppercase tracking-wider bg-amber-200 text-amber-950 px-2.5 py-0.5 rounded-full';
+        badge.textContent = 'Lote Não Localizado na Base';
+        sub.textContent = `O código "${fallbackCode}" não consta nos lotes publicados. Verifique a impressão na embalagem (ex: 01/26).`;
+
+        document.getElementById('display-lot').textContent = fallbackCode;
+        document.getElementById('display-fab').textContent = 'Conferir rótulo';
+        document.getElementById('display-val').textContent = '60 dias após FAB';
+
+        document.getElementById('timeline-lot-label').textContent = fallbackCode;
+        document.getElementById('step4-lot').textContent = `Lote ${fallbackCode}`;
+        document.getElementById('step4-fab').textContent = 'data impressa';
+
+        document.getElementById('qr-lot-text').textContent = fallbackCode;
+        document.getElementById('qr-fab-text').textContent = '--/--/----';
+        document.getElementById('qr-val-text').textContent = '--/--/----';
+        document.getElementById('sac-lot').value = fallbackCode;
+
+        renderQrMatrix(fallbackCode);
+      }
+    }
+
+    // Submissão da barra de consulta rápida no cabeçalho
+    document.getElementById('quick-lot-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = document.getElementById('quick-lot-input').value;
+      updateLotView(val);
+    });
+
+    // Modal do Certificado S.I.E. RS
+    const certModal = document.getElementById('cert-modal');
+    function openCertModal() {
+      certModal.classList.remove('hidden');
+    }
+    function closeCertModal() {
+      certModal.classList.add('hidden');
+    }
+    certModal.addEventListener('click', (e) => {
+      if (e.target === certModal) closeCertModal();
+    });
+
+    // Copiar link de rastreio do lote (compatível com iframe)
+    document.getElementById('copy-link-btn').addEventListener('click', () => {
+      const currentLot = document.getElementById('display-lot').textContent.trim();
+      const shareUrl = `${window.location.href.split('#')[0]}?lote=${encodeURIComponent(currentLot)}`;
+      
+      const tempInput = document.createElement('input');
+      tempInput.value = shareUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      const label = document.getElementById('copy-link-text');
+      label.textContent = 'Link Copiado!';
+      setTimeout(() => {
+        label.textContent = 'Copiar Link do Lote';
+      }, 2500);
+    });
+
+    // Formulário SAC
+    document.getElementById('sac-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('sac-name').value.trim();
+      const lot = document.getElementById('sac-lot').value;
+      const protocol = `SC-${Math.floor(100000 + Math.random() * 900000)}`;
+
+      const feedback = document.getElementById('sac-feedback');
+      const feedbackText = document.getElementById('sac-feedback-text');
+      feedbackText.textContent = `Olá, ${name}. Sua solicitação referente ao Lote ${lot} foi registrada sob o protocolo #${protocol}. Nossa equipe da Linha do Campo (Erechim - RS) responderá em breve.`;
+      feedback.classList.remove('hidden');
+      e.target.reset();
+      document.getElementById('sac-lot').value = lot;
+    });
+
+    // Inicializa com Lote 01/26 (ou parâmetro ?lote= da URL ao escanear QR Code)
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const urlLot = params.get('lote') || '01/26';
+      document.getElementById('quick-lot-input').value = urlLot;
+      updateLotView(urlLot);
+    });
+  </script>
+</body>
+</html>
